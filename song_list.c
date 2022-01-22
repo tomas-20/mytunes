@@ -30,18 +30,37 @@ struct song_list *add_song(struct song_list *list, struct song *cancion) {
   return list;
 }
 
-void print_song_list_helper(struct song_list *list) {
+struct song_list *get_songs_by_artist(struct song_list *list, char *artist) {
+  if (!(artist && list)) {
+    return list;
+  }
+  int difference = artistcmp(artist, list->cancion);
+  if (difference == 0) {
+    return list;
+  }
+  if (difference > 0) {
+    return get_songs_by_artist(list->next, artist);
+  }
+  return NULL;
+}
+
+void print_songs_by_artist_helper(struct song_list *list, char *artist) {
   print_song(list->cancion);
-  if (list->next) {
+  if (list->next && !(artist && artistcmp(artist, list->next->cancion))) {
     printf(", ");
-    print_song_list_helper(list->next);
+    print_songs_by_artist_helper(list->next, artist);
   }
 }
 
-void print_song_list(struct song_list *list) {
+void print_songs_by_artist(struct song_list *list, char *artist) {
+  list = get_songs_by_artist(list, artist);
   printf("{");
   if (list) {
-    print_song_list_helper(list);
+    print_songs_by_artist_helper(list, artist);
   }
   printf("}");
+}
+
+void print_song_list(struct song_list *list) {
+  print_songs_by_artist(list, NULL);
 }

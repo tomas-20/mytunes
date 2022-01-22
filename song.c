@@ -46,14 +46,6 @@ int songcmp(struct song *a, struct song *b) {
   return strcmp(a->title, b->title);
 }
 
-int same_string(char *a, char *b) {
-  return !strcmp(a, b);
-}
-
-int title_is(struct song *cancion, char *title) {
-  return same_string(cancion->title, title);
-}
-
-int artist_is(struct song *cancion, char *artist) {
-  return same_string(cancion->artist, artist);
+int artistcmp(char *artist, struct song *cancion) {
+  return strcmp(artist, cancion->artist);
 }

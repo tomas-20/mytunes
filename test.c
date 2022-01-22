@@ -12,6 +12,8 @@ int main() {
   list = add_song(list, west);
   print_song_list(list);
   printf("\n");
+  print_songs_by_artist(list, "village people");
+  printf("\n");
   free_song_list(list);
   return 0;
 }
