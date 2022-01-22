@@ -20,6 +20,12 @@ int main() {
   printf("random song: ");
   print_random_song(list);
   printf("\n");
+  list = remove_song(list, "go west", "village people");
+  print_song_list(list);
+  printf("\n");
+  printf("songs by village people: ");
+  print_songs_by_artist(list, "village people");
+  printf("\n");
   free_song_list(list);
   return 0;
 }

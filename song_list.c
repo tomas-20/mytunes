@@ -89,3 +89,21 @@ void print_song_at(struct song_list *list, int index) {
 void print_random_song(struct song_list *list) {
   print_song_at(list, rando(get_song_list_length(list)));
 }
+
+struct song_list *remove_song_helper(struct song_list *list, struct song *cancion) {
+  if (list) {
+    if (songcmp(list->cancion, cancion)) {
+      list->next = remove_song_helper(list->next, cancion);
+      return list;
+    }
+    free(list->cancion);
+    free(cancion);
+    return list->next;
+  }
+  free(cancion);
+  return list;
+}
+
+struct song_list *remove_song(struct song_list *list, char *title, char *artist) {
+  return remove_song_helper(list, get_song(title, artist));
+}
