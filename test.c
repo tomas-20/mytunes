@@ -17,6 +17,9 @@ int main() {
   printf("songs by bill wurtz: ");
   print_songs_by_artist(list, "bill wurtz");
   printf("\n");
+  printf("random song: ");
+  print_random_song(list);
+  printf("\n");
   free_song_list(list);
   return 0;
 }

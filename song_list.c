@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include "song.h"
+#include "rando.h"
 
 struct song_list {
   struct song *cancion;
@@ -31,7 +32,7 @@ struct song_list *add_song_helper(struct song_list *list, struct song *cancion) 
 }
 
 struct song_list *add_song(struct song_list *list, char *title, char *artist) {
-  return add_song_helper(list, get_song(title, artist));  
+  return add_song_helper(list, get_song(title, artist));
 }
 
 struct song_list *get_songs_by_artist(struct song_list *list, char *artist) {
@@ -67,4 +68,24 @@ void print_songs_by_artist(struct song_list *list, char *artist) {
 
 void print_song_list(struct song_list *list) {
   print_songs_by_artist(list, NULL);
+}
+
+int get_song_list_length(struct song_list *list) {
+  if (list) {
+    return get_song_list_length(list->next) + 1;
+  }
+  return 0;
+}
+
+void print_song_at(struct song_list *list, int index) {
+  if (index) {
+    print_song_at(list->next, index - 1);
+  }
+  else {
+    print_song(list->cancion);
+  }
+}
+
+void print_random_song(struct song_list *list) {
+  print_song_at(list, rando(get_song_list_length(list)));
 }
