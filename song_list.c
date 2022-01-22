@@ -9,7 +9,7 @@ struct song_list {
 };
 
 struct song_list *get_song_list(struct song *cancion, struct song_list *next) {
-  struct song_list *list = malloc(sizeof (struct song_list));
+  struct song_list *list = malloc(sizeof *list);
   list->cancion = cancion;
   list->next = next;
   return list;

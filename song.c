@@ -22,7 +22,7 @@ char *get_string_copy(char *string) {
 }
 
 struct song *get_song(char *title, char *artist) {
-  struct song *cancion = malloc(sizeof (struct song));
+  struct song *cancion = malloc(sizeof *cancion);
   cancion->title = get_string_copy(title);
   cancion->artist = get_string_copy(artist);
   return cancion;
