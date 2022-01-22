@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <string.h>
+#include <stdio.h>
 
 struct song {
   char *title;
@@ -31,4 +32,16 @@ void free_song(struct song *cancion) {
   free(cancion->title);
   free(cancion->artist);
   free(cancion);
+}
+
+void print_song(struct song *cancion) {
+  printf("(\"%s\" by %s)", cancion->title, cancion->artist);
+}
+
+int songcmp(struct song *a, struct song *b) {
+  int difference = strcmp(a->artist, b->artist);
+  if (difference) {
+    return difference;
+  }
+  return strcmp(a->title, b->title);
 }
