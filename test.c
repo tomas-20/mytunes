@@ -3,12 +3,16 @@
 
 int main() {
   struct song_list *list = NULL;
+  printf("random song: ");
+  print_random_song(list);
+  printf("\n");
   list = add_song(list, "ymca", "village people");
   list = add_song(list, "los dinosaurios", "charly garcia");
   list = add_song(list, "i'm a princess", "bill wurtz");
   list = add_song(list, "go west", "village people");
   list = add_song(list, "la de da", "bill wurtz");
   list = add_song(list, "just did a bad thing", "bill wurtz");
+  printf("all songs: ");
   print_song_list(list);
   printf("\n");
   printf("songs by village people: ");
