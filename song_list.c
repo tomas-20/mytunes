@@ -22,12 +22,16 @@ void free_song_list(struct song_list *list) {
   free(list);
 }
 
-struct song_list *add_song(struct song_list *list, struct song *cancion) {
+struct song_list *add_song_helper(struct song_list *list, struct song *cancion) {
   if (!list || songcmp(cancion, list->cancion) <= 0) {
     return get_song_list(cancion, list);
   }
-  list->next = add_song(list->next, cancion);
+  list->next = add_song_helper(list->next, cancion);
   return list;
+}
+
+struct song_list *add_song(struct song_list *list, char *title, char *artist) {
+  return add_song_helper(list, get_song(title, artist));  
 }
 
 struct song_list *get_songs_by_artist(struct song_list *list, char *artist) {
