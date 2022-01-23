@@ -7,3 +7,4 @@ int get_song_list_length(struct song_list *);
 void print_song_at(struct song_list *, int);
 void print_random_song(struct song_list *);
 struct song_list *remove_song(struct song_list *, char *, char *);
+void find_song(struct song_list *, char *, char *);

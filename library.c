@@ -44,6 +44,10 @@ void print_oeuvre(struct song_list *library[27], char *artist) {
   printf("\n");
 }
 
+void find_in_library(struct song_list *library[27], char *title, char *artist) {
+  find_song(library[char_to_index(artist[0])], title, artist);
+}
+
 void print_by_letter(struct song_list *library[27], char c) {
   int index = char_to_index(c);
   if (library[index]) {

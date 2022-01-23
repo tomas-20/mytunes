@@ -18,6 +18,8 @@ int main() {
   print_oeuvre(library, "village people");
   print_by_letter(library, 'b');
   shuffle(library, 3);
+  find_in_library(library, "happy birthday", "somebody");
+  find_in_library(library, "la de da", "bill wurtz");
   clear_library(library);
   return 0;
 }

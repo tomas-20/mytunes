@@ -109,3 +109,25 @@ struct song_list *remove_song_helper(struct song_list *list, struct song *cancio
 struct song_list *remove_song(struct song_list *list, char *title, char *artist) {
   return remove_song_helper(list, get_song(title, artist));
 }
+
+void find_song_helper(struct song_list *list, struct song *cancion) {
+  if (list) {
+    if (songcmp(list->cancion, cancion)) {
+      find_song_helper(list->next, cancion);
+    }
+    else {
+      printf("yes we have ");
+      print_song(cancion);
+      printf("\n");
+      free(cancion);
+    }
+  }
+  printf("no we don't have ");
+  print_song(cancion);
+  printf("\n");
+  free(cancion);
+}
+
+void find_song(struct song_list *list, char *title, char *artist) {
+  find_song_helper(list, get_song(title, artist));
+}
