@@ -82,3 +82,15 @@ void print_library_song_at(struct song_list *library[27], int n) {
 void print_random_library_song(struct song_list *library[27]) {
   print_library_song_at(library, rando(get_library_length(library)));
 }
+
+void shuffle(struct song_list *library[27], int n) {
+  printf("some random songs for you: ");
+  printf("{");
+  for (int i = 0; i < n; i ++) {
+    print_random_library_song(library);
+    if (i + 1 < n) {
+      printf(", ");
+    }
+  }
+  printf("}");
+}
