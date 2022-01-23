@@ -1,35 +1,16 @@
 #include <stdio.h>
-#include "song_list.h"
+#include "library.h"
 
 int main() {
-  struct song_list *list = NULL;
-  printf("random song: ");
-  print_random_song(list);
-  printf("\n");
-  list = add_song(list, "ymca", "village people");
-  list = add_song(list, "los dinosaurios", "charly garcia");
-  list = add_song(list, "i'm a princess", "bill wurtz");
-  list = add_song(list, "go west", "village people");
-  list = add_song(list, "la de da", "bill wurtz");
-  list = add_song(list, "just did a bad thing", "bill wurtz");
-  printf("all songs: ");
-  print_song_list(list);
-  printf("\n");
-  printf("songs by village people: ");
-  print_songs_by_artist(list, "village people");
-  printf("\n");
-  printf("songs by bill wurtz: ");
-  print_songs_by_artist(list, "bill wurtz");
-  printf("\n");
-  printf("random song: ");
-  print_random_song(list);
-  printf("\n");
-  list = remove_song(list, "go west", "village people");
-  print_song_list(list);
-  printf("\n");
-  printf("songs by village people: ");
-  print_songs_by_artist(list, "village people");
-  printf("\n");
-  free_song_list(list);
+  struct song_list *library[27];
+  fill_library(library);
+  add_song_to_library(library, "ymca", "village people");
+  add_song_to_library(library, "los dinosaurios", "charly garcia");
+  add_song_to_library(library, "i'm a princess", "bill wurtz");
+  add_song_to_library(library, "go west", "village people");
+  add_song_to_library(library, "la de da", "bill wurtz");
+  add_song_to_library(library, "just did a bad thing", "bill wurtz");
+  print_library(library);
+  clear_library(library);
   return 0;
 }
