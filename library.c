@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include "song_list.h"
+#include "rando.h"
 
 void fill_library(struct song_list *library[27]) {
   for (int i = 0; i < 27; i ++) {
@@ -55,4 +56,29 @@ void print_library(struct song_list *library[27]) {
   for (char c = '`'; c <= 'z'; c ++) {
     print_songs_by_letter(library, c);
   }
+}
+
+int get_library_length(struct song_list *library[27]) {
+  int length = 0;
+  for (int i = 0; i < 27; i ++) {
+    length += get_song_list_length(library[i]);
+  }
+  return length;
+}
+
+void print_library_song_at(struct song_list *library[27], int n) {
+  for (int i = 0; i < 27; i ++) {
+    int list_length = get_song_list_length(library[i]);
+    if (n < list_length) {
+      print_song_at(library[i], n);
+      i = 27;
+    }
+    else {
+      n -= list_length;
+    }
+  }
+}
+
+void print_random_library_song(struct song_list *library[27]) {
+  print_library_song_at(library, rando(get_library_length(library)));
 }

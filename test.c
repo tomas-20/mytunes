@@ -13,6 +13,9 @@ int main() {
   remove_from_library(library, "nothing", "nobody");
   remove_from_library(library, "go west", "village people");
   print_library(library);
+  printf("random song: ");
+  print_random_library_song(library);
+  printf("\n");
   clear_library(library);
   return 0;
 }
