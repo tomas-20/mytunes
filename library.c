@@ -32,6 +32,11 @@ void add_to_library(struct song_list *library[27], char *title, char *artist) {
   library[index] = add_song(library[index], title, artist);
 }
 
+void remove_from_library(struct song_list *library[27], char *title, char *artist) {
+  int index = char_to_index(artist[0]);
+  library[index] = remove_song(library[index], title, artist);
+}
+
 void print_songs_by_letter(struct song_list *library[27], char c) {
   int index = char_to_index(c);
   if (library[index]) {
