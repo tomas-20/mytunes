@@ -27,7 +27,7 @@ int char_to_index(char c) {
   return 0;
 }
 
-void add_song_to_library(struct song_list *library[27], char *title, char *artist) {
+void add_to_library(struct song_list *library[27], char *title, char *artist) {
   int index = char_to_index(artist[0]);
   library[index] = add_song(library[index], title, artist);
 }
