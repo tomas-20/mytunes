@@ -16,6 +16,7 @@ int main() {
   print_oeuvre(library, "bill wurtz");
   print_oeuvre(library, "bob dylan");
   print_oeuvre(library, "village people");
+  print_by_letter(library, 'b');
   shuffle(library, 3);
   clear_library(library);
   return 0;

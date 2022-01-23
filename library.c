@@ -44,7 +44,7 @@ void print_oeuvre(struct song_list *library[27], char *artist) {
   printf("\n");
 }
 
-void print_songs_by_letter(struct song_list *library[27], char c) {
+void print_by_letter(struct song_list *library[27], char c) {
   int index = char_to_index(c);
   if (library[index]) {
     if (is_letter(c)) {
@@ -60,7 +60,7 @@ void print_songs_by_letter(struct song_list *library[27], char c) {
 
 void print_library(struct song_list *library[27]) {
   for (char c = '`'; c <= 'z'; c ++) {
-    print_songs_by_letter(library, c);
+    print_by_letter(library, c);
   }
 }
 
