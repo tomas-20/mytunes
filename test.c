@@ -10,11 +10,13 @@ int main() {
   add_to_library(library, "go west", "village people");
   add_to_library(library, "la de da", "bill wurtz");
   add_to_library(library, "just did a bad thing", "bill wurtz");
-  remove_from_library(library, "nothing", "nobody");
-  remove_from_library(library, "go west", "village people");
+  add_to_library(library, "who am I", "24601");
+  add_to_library(library, "the times they are a changin", "bob dylan");
   print_library(library);
+  print_oeuvre(library, "bill wurtz");
+  print_oeuvre(library, "bob dylan");
+  print_oeuvre(library, "village people");
   shuffle(library, 3);
-  printf("\n");
   clear_library(library);
   return 0;
 }

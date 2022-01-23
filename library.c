@@ -38,6 +38,12 @@ void remove_from_library(struct song_list *library[27], char *title, char *artis
   library[index] = remove_song(library[index], title, artist);
 }
 
+void print_oeuvre(struct song_list *library[27], char *artist) {
+  printf("songs by %s: ", artist);
+  print_songs_by_artist(library[char_to_index(artist[0])], artist);
+  printf("\n");
+}
+
 void print_songs_by_letter(struct song_list *library[27], char c) {
   int index = char_to_index(c);
   if (library[index]) {
@@ -92,5 +98,5 @@ void shuffle(struct song_list *library[27], int n) {
       printf(", ");
     }
   }
-  printf("}");
+  printf("}\n");
 }
